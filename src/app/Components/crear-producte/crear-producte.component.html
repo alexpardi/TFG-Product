@@ -1,0 +1,96 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body text-center">
+      <span class="titulo">{{ titol_page }}</span>
+      <form class="mt-4" [formGroup]="AddProductForm" (ngSubmit)="AddProduct()" >
+        <div class="row mb-3">
+          <div class="col">
+            <span *ngIf="AddProductForm.get('IdProducte')?.valid" class="float-start" style="font-size: 20px">ID del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="ID del producte" formControlName="IdProducte">
+            <div class="text-danger" *ngIf="AddProductForm.get('IdProducte')?.hasError('required') && AddProductForm.get('IdProducte')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('PreuProd')?.valid" class="float-start" style="font-size: 20px">Preu:</span>
+            <input type="number" class="form-control form-control-lg" placeholder="Preu" formControlName="PreuProd">
+            <div class="text-danger" *ngIf="AddProductForm.get('PreuProd')?.hasError('required') && AddProductForm.get('PreuProd')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <span *ngIf="AddProductForm.get('NomProducte')?.valid" class="float-start" style="font-size: 20px">Nom del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Nom del producte" formControlName="NomProducte">
+            <div class="text-danger" *ngIf="AddProductForm.get('NomProducte')?.hasError('required') && AddProductForm.get('NomProducte')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('TallaProd')?.valid" class="float-start" style="font-size: 20px">Talla del producte:</span>
+            <input type="number" class="form-control form-control-lg" placeholder="Talla del producte" formControlName="TallaProd">
+            <div class="text-danger" *ngIf="AddProductForm.get('TallaProd')?.hasError('required') && AddProductForm.get('TallaProd')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits')?.valid" class="float-start" style="font-size: 20px">Numero de productes afegits:</span>
+            <input type="number" class="form-control form-control-lg" placeholder="Numero de productes afegits" formControlName="ProdAfegits">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits')?.hasError('required') && AddProductForm.get('ProdAfegits')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('DescripcioProd')?.valid" class="float-start" style="font-size: 20px">Descripció del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Descripció del producte" formControlName="DescripcioProd">
+            <div class="text-danger" *ngIf="AddProductForm.get('DescripcioProd')?.hasError('required') && AddProductForm.get('DescripcioProd')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+        </div>
+
+        <!--div class="row mb-3">
+          <div class="col">
+            <span *ngIf="AddProductForm.get('TipusProd')?.valid" class="float-start" style="font-size: 20px">Tipus de producte:</span>
+            <select class="form-control form-control-lg" formControlName="TipusProd">
+              <option hidden selected>Tipus de producte</option>
+              <option value="samarreta">Samarreta</option>
+              <option value="pantalons">Pantalons</option>
+            </select>
+            <div class="text-danger" *ngIf="AddProductForm.get('TipusProd')?.hasError('required') && AddProductForm.get('TipusProd')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('DescripcioProd')?.valid" class="float-start" style="font-size: 20px">Descripció del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Descripció del producte" formControlName="DescripcioProd">
+            <div class="text-danger" *ngIf="AddProductForm.get('DescripcioProd')?.hasError('required') && AddProductForm.get('DescripcioProd')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+        </div-->
+
+        <div class="mb-3">
+          <span *ngIf="AddProductForm.get('Imatge')?.valid" class="float-start" style="font-size: 20px">Afegir imatge:</span>
+          <input type="file" class="form-control form-control-lg" placeholder="Afegir imatge" formControlName="Imatge">
+          <div class="text-danger" *ngIf="AddProductForm.get('Imatge')?.hasError('required') && AddProductForm.get('Imatge')?.touched">
+            <span>Camp obligatori</span>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <button type="submit" [disabled]="AddProductForm.invalid" class="btn btn-success btn-lg">ACCEPTA</button>
+          </div>
+          <div class="col">
+            <button type="reset" class="btn btn-warning btn-lg">ESBORRA TOT</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

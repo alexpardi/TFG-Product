@@ -1,0 +1,36 @@
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body text-center">
+      <span class="titulo">LLISTAT DE PRODUCTES</span>
+
+      <table class="table table-dark table-striped mt-4">
+        <thead>
+        <tr>
+          <th scope="col">ID Producto</th>
+          <th scope="col">Nom del producte</th>
+          <th scope="col">Quantitat</th>
+          <th scope="col">Talla</th>
+          <th scope="col">Preu</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor= "let producte of listProductes">
+          <th scope="row">{{ producte.ProdID }}</th>
+          <td>{{ producte.ProdNom }}</td>
+          <td>{{ producte.ProdAfegits }}</td>
+          <td>{{ producte.ProdTalla }}</td>
+          <td>{{ producte.ProdPreu | currency: 'EUR' }}</td>
+          <td>
+            <i [routerLink]="['/editar-producte', producte._id]"  class="fa-solid fa-pen-to-square"></i>
+            <i (click)="eliminarProducte(producte._id)" class="fa-solid fa-trash"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <h4 *ngIf="listProductes.length == 0">Encara no hi ha productes al sistema</h4>
+
+    </div>
+  </div>
+</div>
