@@ -37,7 +37,7 @@ export class IniciarUsuariComponent {
 
     console.log(USUARI);
     this._producteService.crearUsuari(USUARI).subscribe(data => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/llistar-productes']);
     }, error => {
       console.log(error);
       this.AddUserForm.reset();
@@ -47,16 +47,16 @@ export class IniciarUsuariComponent {
 
   IniciaSessio(){
     const USUARI: Inicisessio = {
-      UserName: this.AddUserForm.get('IniciUsuari')?.value,
-      UserContrasenya: this.AddUserForm.get('IniciContrasenya')?.value,
+      UserName: this.InitSesionForm.get('IniciUsuari')?.value,
+      UserContrasenya: this.InitSesionForm.get('IniciContrasenya')?.value,
     }
 
     console.log(USUARI);
     this._producteService.inicisessio(USUARI).subscribe(data => {
-      this.router.navigate(['/modifica-usuari']);
+      this.router.navigate(['/llistar-productes']);
     }, error => {
       console.log(error);
-      this.AddUserForm.reset();
+      this.InitSesionForm.reset();
     })
 
   }

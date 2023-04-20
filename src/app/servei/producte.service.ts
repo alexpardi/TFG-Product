@@ -10,8 +10,8 @@ import {Inicisessio} from "../model/Inicisessio";
 })
 export class ProducteService {
   urlP = 'http://localhost:4000/api/productes/';
-  urlU = 'http://localhost:4000/api/user/';
-  urlUI = 'http://localhost:4000/api/user/login/';
+  urlU = 'http://localhost:4000/api/user/creaUsuari';
+  urlUI = 'http://localhost:4000/api/user/iniciaSessio';
 
   constructor(private http: HttpClient) { }
 
