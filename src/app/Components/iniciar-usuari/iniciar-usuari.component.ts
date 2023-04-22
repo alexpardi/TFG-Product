@@ -36,11 +36,14 @@ export class IniciarUsuariComponent {
     }
 
     console.log(USUARI);
-    this._producteService.crearUsuari(USUARI).subscribe(data => {
+    this._producteService.crearUsuari(USUARI).subscribe(res => {
+      console.log(res)
+      localStorage.setItem('token', res.token)
       this.router.navigate(['/llistar-productes']);
     }, error => {
       console.log(error);
       this.AddUserForm.reset();
+      alert("Datos incorrectos");
     })
 
   }
@@ -52,12 +55,14 @@ export class IniciarUsuariComponent {
     }
 
     console.log(USUARI);
-    this._producteService.inicisessio(USUARI).subscribe(data => {
+    this._producteService.inicisessio(USUARI).subscribe(res => {
+      console.log(res)
+      localStorage.setItem('token', res.token)
       this.router.navigate(['/llistar-productes']);
     }, error => {
       console.log(error);
       this.InitSesionForm.reset();
+      alert("L'usuari o la contrasenya son incorrectes");
     })
-
   }
 }

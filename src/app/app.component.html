@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="row" >
     <div class="col">
@@ -7,7 +9,7 @@
       <h1 class="header-title justify-content-center d-flex">ALEX TFG</h1>
     </div>
     <div class="col my-3" >
-      <button class="btn btn-primary list-unstyled border-0 float-end" routerLink="/modifica-usuari" style="background-color: white">
+      <button class="btn btn-primary list-unstyled border-0 float-end" *ngIf="ProducteService.loggedIn()" routerLink="/modifica-usuari" style="background-color: white">
         <img src="assets/user.png" class="userheader rounded float-right" width="100" height="100" hspace="30">
       </button>
     </div>
@@ -17,7 +19,7 @@
 <div class="row">
 
   <div class="col" style="border-color: gray"  >
-    <div class="card border-5" style="width: 90%;"  routerLink="/llistar-productes" type="button" >
+    <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/llistar-productes" type="button" >
       <div class="card-body text-center ">
         <span   class="titulo">VEURE LLISTAT DE PRODUCTES</span>
       </div>
@@ -25,7 +27,7 @@
   </div>
 
   <div class="col" style="border-color: gray"  >
-    <div class="card border-5" style="width: 90%;" routerLink="/crear-producte" type="button" >
+    <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/crear-producte" type="button" >
       <div class="card-body text-center ">
         <span   class="titulo">AFEGIR NOUS PRODUCTES</span>
       </div>

@@ -10,8 +10,10 @@ import { ModificaUsuariComponent } from './Components/modifica-usuari/modifica-u
 
 import {ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import{ HttpClientModule } from "@angular/common/http";
+import{ HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { IniciarUsuariComponent } from './Components/iniciar-usuari/iniciar-usuari.component'
+import {AuthGuard} from "./auth.guard";
+import { TokenInterceptorService } from "./servei/token-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,12 @@ import { IniciarUsuariComponent } from './Components/iniciar-usuari/iniciar-usua
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

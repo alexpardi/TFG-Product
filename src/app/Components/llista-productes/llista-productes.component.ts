@@ -27,10 +27,13 @@ export class LlistaProductesComponent {
   }
 
   eliminarProducte(id: any){
-    this._producteService.eliminarProducte(id).subscribe(data => {
-      this.obtenirProductes();
-    }, error => {
-      console.log(error);
-    })
+    if(confirm('Estas segur de que vols eliminar aquest producte?')){
+      this._producteService.eliminarProducte(id).subscribe(data => {
+        this.obtenirProductes();
+      }, error => {
+        console.log(error);
+      })
+    }
   }
+
 }

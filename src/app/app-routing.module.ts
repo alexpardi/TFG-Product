@@ -4,15 +4,16 @@ import {LlistaProductesComponent} from "./Components/llista-productes/llista-pro
 import {CrearProducteComponent} from "./Components/crear-producte/crear-producte.component";
 import {ModificaUsuariComponent} from "./Components/modifica-usuari/modifica-usuari.component";
 import {IniciarUsuariComponent} from "./Components/iniciar-usuari/iniciar-usuari.component";
+import {AuthGuard} from "./auth.guard";
 
 
 const routes: Routes = [
   { path: '', component: IniciarUsuariComponent},
   { path: 'login', component: IniciarUsuariComponent},
-  { path: 'llistar-productes', component: LlistaProductesComponent},
-  { path: 'crear-producte', component: CrearProducteComponent},
-  { path: 'editar-producte/:id', component: CrearProducteComponent},
-  { path: 'modifica-usuari', component: ModificaUsuariComponent},
+  { path: 'llistar-productes', component: LlistaProductesComponent, canActivate: [AuthGuard]},
+  { path: 'crear-producte', component: CrearProducteComponent, canActivate: [AuthGuard]},
+  { path: 'editar-producte/:id', component: CrearProducteComponent, canActivate: [AuthGuard]},
+  { path: 'modifica-usuari', component: ModificaUsuariComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

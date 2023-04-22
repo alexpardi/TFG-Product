@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
+
 import {AddProducte} from 'src/app/model/AddProducte'
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProducteService} from "../../servei/producte.service";
@@ -9,9 +11,10 @@ import {ProducteService} from "../../servei/producte.service";
   templateUrl: './crear-producte.component.html',
   styleUrls: ['./crear-producte.component.css']
 })
-export class CrearProducteComponent{
+export class CrearProducteComponent implements OnInit{
   AddProductForm: FormGroup;
   titol_page = 'CREAR PRODUCTE';
+
   /* Funciona con lo de abajo tambien comentado
   ProducteID = 'ID del producte';
   ProducteNom= 'Nom del producte';
@@ -57,7 +60,8 @@ export class CrearProducteComponent{
         this.router.navigate(['/llistar-productes']);
       }, error => {
         console.log(error);
-        this.AddProductForm.reset();
+        //this.AddProductForm.reset();
+        alert("El producte ja existeix o no s'ha pogut crear de manera correcte.");
       })
     }else{
       //afegim producte
@@ -66,7 +70,8 @@ export class CrearProducteComponent{
         this.router.navigate(['/llistar-productes']);
       }, error => {
         console.log(error);
-        this.AddProductForm.reset();
+        //this.AddProductForm.reset();
+        alert("El producte ja existeix o no s'ha pogut crear de manera correcte.");
       })
     }
 
@@ -95,6 +100,8 @@ export class CrearProducteComponent{
           ProdDescripcio: data.DescripcioProd,
           ProdImatge: data.Imatge,
         })
+
+        console.log(data);
       })
     }
   }

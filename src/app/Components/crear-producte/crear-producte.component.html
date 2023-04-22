@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body text-center">
       <span class="titulo">{{ titol_page }}</span>
-      <form class="mt-4" [formGroup]="AddProductForm" (ngSubmit)="AddProduct()" >
+      <form class="mt-4" name="ProdForm" [formGroup]="AddProductForm" (ngSubmit)="AddProduct()" >
         <div class="row mb-3">
           <div class="col">
             <span *ngIf="AddProductForm.get('IdProducte')?.valid" class="float-start" style="font-size: 20px">ID del producte:</span>
