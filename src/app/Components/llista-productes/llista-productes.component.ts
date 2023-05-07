@@ -27,7 +27,7 @@ export class LlistaProductesComponent {
   }
 
   eliminarProducte(id: any){
-    if(confirm('Estas segur de que vols eliminar aquest producte?')){
+    if(confirm('Estas segur que vols eliminar aquest producte?')){
       this._producteService.eliminarProducte(id).subscribe(data => {
         this.obtenirProductes();
       }, error => {

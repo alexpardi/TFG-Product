@@ -34,6 +34,8 @@ export class CrearProducteComponent implements OnInit{
       PreuProd: ['', Validators.required],
       TallaProd: ['', Validators.required],
       DescripcioProd: ['', Validators.required],
+      TipusProd: ['', Validators.required],
+      Esport: ['', Validators.required],
       Imatge: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -51,6 +53,8 @@ export class CrearProducteComponent implements OnInit{
       ProdPreu: this.AddProductForm.get('PreuProd')?.value,
       ProdTalla: this.AddProductForm.get('TallaProd')?.value,
       ProdDescripcio: this.AddProductForm.get('DescripcioProd')?.value,
+      ProdTipus: this.AddProductForm.get('TipusProd')?.value,
+      ProdEsport: this.AddProductForm.get('Esport')?.value,
       ProdImatge: this.AddProductForm.get('Imatge')?.value,
     }
 
@@ -77,28 +81,22 @@ export class CrearProducteComponent implements OnInit{
 
   }
 
-  EditaProd(){
+  EditaProd() {
     if(this.id !== null){
       this.titol_page = 'EDITAR PRODUCTE';
 
       this._producteService.editarProducte(this.id).subscribe(data=> {
-        /* Funciona pero no es lo que quiero
-        this.ProducteID = data.ProdID;
-        this.ProducteNom = data.ProdNom;
-        this.ProducteDescripcio = data.ProdNom;
-        this.ProducteImatge= data.ProdNom;
-        this.ProductePreu= data.ProdNom;
-        this.ProducteTalla =data.ProdNom;
-        this.ProducteAfegits= data.ProdNom;*/
 
-        this.AddProductForm.setValue({
+        this.AddProductForm=this.fb.group({
           IdProducte: data.ProdID,
-          NomProducte: data.NomProducte,
+          NomProducte: data.ProdNom,
           ProdAfegits: data.ProdAfegits,
-          ProdPreu: data.PreuProd,
-          ProdTalla: data.TallaProd,
-          ProdDescripcio: data.DescripcioProd,
-          ProdImatge: data.Imatge,
+          PreuProd: data.ProdPreu,
+          TallaProd: data.ProdTalla,
+          DescripcioProd: data.ProdDescripcio,
+          TipusProd: data.ProdTipus,
+          Esport: data.ProdEsport,
+          Imatge: data.ProdImatge,
         })
 
         console.log(data);

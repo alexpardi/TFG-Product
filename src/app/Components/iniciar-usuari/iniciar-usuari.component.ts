@@ -42,7 +42,7 @@ export class IniciarUsuariComponent {
       this.router.navigate(['/llistar-productes']);
     }, error => {
       console.log(error);
-      this.AddUserForm.reset();
+      //this.AddUserForm.reset();
       alert("Datos incorrectos");
     })
 
@@ -61,7 +61,7 @@ export class IniciarUsuariComponent {
       this.router.navigate(['/llistar-productes']);
     }, error => {
       console.log(error);
-      this.InitSesionForm.reset();
+      //this.InitSesionForm.reset();
       alert("L'usuari o la contrasenya son incorrectes");
     })
   }

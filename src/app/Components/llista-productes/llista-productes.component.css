@@ -2,3 +2,9 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
+table
+{
+  table-layout: fixed;
+  width: 100%;
+}

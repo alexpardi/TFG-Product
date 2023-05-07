@@ -5,23 +5,20 @@
       <span class="titulo">MODIFICAR USUARI</span>
       <form class="mt-4" name="ProdForm" [formGroup]="modiUserForm" (ngSubmit)="modificarUser()">
         <div class="mb-3">
-          <span *ngIf="modiUserForm.get('ModUsuari')?.valid" class="float-start" style="font-size: 20px">Modifica nom d'usuari:</span>
-          <input type="text" class="form-control form-control-lg" placeholder="Modifica nom d'usuari" formControlName="ModUsuari">
-          <div class="text-danger" *ngIf="modiUserForm.get('ModUsuari')?.hasError('required') && modiUserForm.get('ModUsuari')?.touched">
-            <span>Camp obligatori</span>
-          </div>
+          <span class="float-start" style="font-size: 20px">Nom d'usuari:</span>
+          <input type="text" formControlName="ModUsuari" class="form-control form-control-lg" readonly>
         </div>
 
         <div class="mb-3">
-          <span *ngIf="modiUserForm.get('ModEmail')?.valid" class="float-start" style="font-size: 20px">Modifica correu electrònic:</span>
-          <input type="text" class="form-control form-control-lg" placeholder="Modifica correu electrònic" formControlName="ModEmail">
+          <span *ngIf="modiUserForm.get('ModEmail')?.value" class="float-start" style="font-size: 20px">Modifica correu electrònic:</span>
+          <input type="text" ngModel email class="form-control form-control-lg" placeholder="Modifica correu electrònic" formControlName="ModEmail">
           <div class="text-danger" *ngIf="modiUserForm.get('ModEmail')?.hasError('required') && modiUserForm.get('ModEmail')?.touched">
             <span>Camp obligatori</span>
           </div>
         </div>
 
         <div class="mb-3">
-          <span *ngIf="modiUserForm.get('ModNom')?.valid" class="float-start" style="font-size: 20px">Modifica el teu Nom:</span>
+          <span *ngIf="modiUserForm.get('ModNom')?.value" class="float-start" style="font-size: 20px">Modifica el teu Nom:</span>
           <input type="text" class="form-control form-control-lg" placeholder="Modifica el teu Nom" formControlName="ModNom">
           <div class="text-danger" *ngIf="modiUserForm.get('ModNom')?.hasError('required') && modiUserForm.get('ModNom')?.touched">
             <span>Camp obligatori</span>
@@ -29,23 +26,27 @@
         </div>
 
         <div class="mb-3">
-          <span *ngIf="modiUserForm.get('ModContrasenya')?.valid" class="float-start" style="font-size: 20px">Modifica la contrasenya:</span>
+          <span *ngIf="modiUserForm.get('ModContrasenya')?.value" class="float-start" style="font-size: 20px">Modifica la contrasenya:</span>
           <input type="password" class="form-control form-control-lg" placeholder="Modifica la contrasenya" formControlName="ModContrasenya">
           <div class="text-danger" *ngIf="modiUserForm.get('ModContrasenya')?.hasError('required') && modiUserForm.get('ModContrasenya')?.touched">
             <span>Camp obligatori</span>
           </div>
         </div>
 
+        <br>
+
         <div class="row mb-3">
           <div class="col">
-            <button type="submit" [disabled]="modiUserForm.invalid" class="btn btn-success btn-lg">ACCEPTA</button>
+            <button type="submit" [disabled]="modiUserForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
           </div>
           <div class="col">
-            <button type="reset" class="btn btn-warning btn-lg">ESBORRA TOT</button>
+            <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>
           </div>
         </div>
 
-        <a routerLink="/login" ><button class="btn btn-danger" (click)="ProducteService.logOut()">LOGOUT</button> </a>
+        <br>
+
+        <a routerLink="/login" ><button class="btn btn-danger" (click)="ProducteService.logOut()">TANCAR SESSIÓ</button> </a>
 
        </form>
      </div>

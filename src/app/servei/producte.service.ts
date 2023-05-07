@@ -5,7 +5,7 @@ import { AddProducte } from "src/app/model/AddProducte"
 import { AddUser } from "src/app/model/AddUser"
 import { modiUser } from "../model/modiUser";
 import {Inicisessio} from "../model/Inicisessio";
-import { Router } from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +43,7 @@ export class ProducteService {
     return this.http.post(this.urlU, user);
   }
 
-  modificaUsuari( user: modiUser){
+  modificaUsuari(user: modiUser): Observable<any>{
     return this.http.put(this.urlMU, user);
   }
 
@@ -64,9 +64,9 @@ export class ProducteService {
   }
 
   logOut(){
-    localStorage.removeItem('token');
+    if(confirm('Estas segur que vols tancar la sessió?')) {
+      localStorage.removeItem('token');
+    }
   }
-
-
 
 }

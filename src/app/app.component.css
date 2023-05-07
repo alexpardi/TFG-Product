@@ -1,7 +1,9 @@
 .header-title {
-  font-size: 80px;
+  margin-top: inherit;
+  font-size: 70px;
   font-family: 'Oswald', sans-serif;
 }
+
 
 .card {
   margin: 0 auto;

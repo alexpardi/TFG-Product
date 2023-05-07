@@ -5,15 +5,15 @@
       <form class="mt-4" name="ProdForm" [formGroup]="AddProductForm" (ngSubmit)="AddProduct()" >
         <div class="row mb-3">
           <div class="col">
-            <span *ngIf="AddProductForm.get('IdProducte')?.valid" class="float-start" style="font-size: 20px">ID del producte:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="ID del producte" formControlName="IdProducte">
+            <span *ngIf="AddProductForm.get('IdProducte')?.value" class="float-start" style="font-size: 20px">ID del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="ID del producte" formControlName="IdProducte" maxlength="20">
             <div class="text-danger" *ngIf="AddProductForm.get('IdProducte')?.hasError('required') && AddProductForm.get('IdProducte')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
           <div class="col">
-            <span *ngIf="AddProductForm.get('PreuProd')?.valid" class="float-start" style="font-size: 20px">Preu:</span>
-            <input type="number" class="form-control form-control-lg" placeholder="Preu" formControlName="PreuProd">
+            <span *ngIf="AddProductForm.get('PreuProd')?.value" class="float-start" style="font-size: 20px">Preu:</span>
+            <input type="number" min="0" oninput="validity.valid" class="form-control form-control-lg" placeholder="Preu" formControlName="PreuProd" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
             <div class="text-danger" *ngIf="AddProductForm.get('PreuProd')?.hasError('required') && AddProductForm.get('PreuProd')?.touched">
               <span>Camp obligatori</span>
             </div>
@@ -21,15 +21,15 @@
         </div>
         <div class="row mb-3">
           <div class="col">
-            <span *ngIf="AddProductForm.get('NomProducte')?.valid" class="float-start" style="font-size: 20px">Nom del producte:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Nom del producte" formControlName="NomProducte">
+            <span *ngIf="AddProductForm.get('NomProducte')?.value" class="float-start" style="font-size: 20px">Nom del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Nom del producte" formControlName="NomProducte" maxlength="50">
             <div class="text-danger" *ngIf="AddProductForm.get('NomProducte')?.hasError('required') && AddProductForm.get('NomProducte')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
           <div class="col">
-            <span *ngIf="AddProductForm.get('TallaProd')?.valid" class="float-start" style="font-size: 20px">Talla del producte:</span>
-            <input type="number" class="form-control form-control-lg" placeholder="Talla del producte" formControlName="TallaProd">
+            <span *ngIf="AddProductForm.get('TallaProd')?.value" class="float-start" style="font-size: 20px">Talla del producte:</span>
+            <input type="number" min="0" oninput="validity.valid" class="form-control form-control-lg" placeholder="Talla del producte" formControlName="TallaProd" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
             <div class="text-danger" *ngIf="AddProductForm.get('TallaProd')?.hasError('required') && AddProductForm.get('TallaProd')?.touched">
               <span>Camp obligatori</span>
             </div>
@@ -37,56 +37,77 @@
         </div>
         <div class="row mb-3">
           <div class="col">
-            <span *ngIf="AddProductForm.get('ProdAfegits')?.valid" class="float-start" style="font-size: 20px">Numero de productes afegits:</span>
-            <input type="number" class="form-control form-control-lg" placeholder="Numero de productes afegits" formControlName="ProdAfegits">
+            <span *ngIf="AddProductForm.get('ProdAfegits')?.value" class="float-start" style="font-size: 20px">Numero de productes afegits:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Numero de productes afegits" formControlName="ProdAfegits" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
             <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits')?.hasError('required') && AddProductForm.get('ProdAfegits')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
           <div class="col">
-            <span *ngIf="AddProductForm.get('DescripcioProd')?.valid" class="float-start" style="font-size: 20px">Descripció del producte:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Descripció del producte" formControlName="DescripcioProd">
+            <span *ngIf="AddProductForm.get('DescripcioProd')?.value" class="float-start" style="font-size: 20px">Descripció del producte:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Descripció del producte" formControlName="DescripcioProd" maxlength="200">
             <div class="text-danger" *ngIf="AddProductForm.get('DescripcioProd')?.hasError('required') && AddProductForm.get('DescripcioProd')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
         </div>
 
-        <!--div class="row mb-3">
+        <div class="row mb-3">
           <div class="col">
-            <span *ngIf="AddProductForm.get('TipusProd')?.valid" class="float-start" style="font-size: 20px">Tipus de producte:</span>
+            <span class="float-start" style="font-size: 20px">Tipus de producte:</span>
             <select class="form-control form-control-lg" formControlName="TipusProd">
-              <option hidden selected>Tipus de producte</option>
-              <option value="samarreta">Samarreta</option>
-              <option value="pantalons">Pantalons</option>
+              <option value="Samarreta">Samarreta</option>
+              <option value="Pantalons">Pantalons</option>
+              <option value="Sabates">Sabates</option>
+              <option value="Raqueta">Raqueta</option>
+              <option value="Esquís">Esquís</option>
+              <option value="Culotte">Culotte</option>
+              <option value="Mallot">Mallot</option>
+              <option value="Bicicleta">Bicicleta</option>
+              <option value="BotaEsquí">Bota esquí</option>
             </select>
             <div class="text-danger" *ngIf="AddProductForm.get('TipusProd')?.hasError('required') && AddProductForm.get('TipusProd')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
           <div class="col">
-            <span *ngIf="AddProductForm.get('DescripcioProd')?.valid" class="float-start" style="font-size: 20px">Descripció del producte:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Descripció del producte" formControlName="DescripcioProd">
-            <div class="text-danger" *ngIf="AddProductForm.get('DescripcioProd')?.hasError('required') && AddProductForm.get('DescripcioProd')?.touched">
+            <span class="float-start" style="font-size: 20px">Esport:</span>
+            <select class="form-control form-control-lg" formControlName="Esport" multiple>
+              <option value="Correr">Correr</option>
+              <option value="Ciclisme">Ciclisme</option>
+              <option value="Futbol">Futbol</option>
+              <option value="Basquet">Basquet</option>
+              <option value="Tenis">Tenis</option>
+              <option value="Esquí">Esquí</option>
+              <option value="Altres">Altres</option>
+            </select>
+            <p>Per seleccionar més d'una opció s'ha de mantenir pressionat: Ctrl (windows) o Command (Mac).</p>
+            <div class="text-danger" *ngIf="AddProductForm.get('Esport')?.hasError('required') && AddProductForm.get('Esport')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
-        </div-->
+        </div>
 
         <div class="mb-3">
-          <span *ngIf="AddProductForm.get('Imatge')?.valid" class="float-start" style="font-size: 20px">Afegir imatge:</span>
-          <input type="file" class="form-control form-control-lg" placeholder="Afegir imatge" formControlName="Imatge">
+          <span *ngIf="AddProductForm.get('Imatge')?.value" class="float-start" style="font-size: 20px">Afegir nom imatge:</span>
+          <input type="text" accept="image/png, image/jpeg" class="form-control form-control-lg" placeholder="Afegir nom imatge" formControlName="Imatge">
           <div class="text-danger" *ngIf="AddProductForm.get('Imatge')?.hasError('required') && AddProductForm.get('Imatge')?.touched">
             <span>Camp obligatori</span>
           </div>
         </div>
 
+        <div class="mb-3">
+          <div class="text-warning " *ngIf="AddProductForm.invalid">
+            <span>Si us plau ompla tots els camps, son obligatoris</span>
+          </div>
+        </div>
+
         <div class="row mb-3">
           <div class="col">
-            <button type="submit" [disabled]="AddProductForm.invalid" class="btn btn-success btn-lg">ACCEPTA</button>
+            <button type="submit" [disabled]="AddProductForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
           </div>
           <div class="col">
-            <button type="reset" class="btn btn-warning btn-lg">ESBORRA TOT</button>
+            <button type="reset" class="btn btn-secondary btn-lg ">ESBORRAR TOT</button>
           </div>
         </div>
 

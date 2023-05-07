@@ -21,7 +21,7 @@
           <td>{{ producte.ProdNom }}</td>
           <td>{{ producte.ProdAfegits }}</td>
           <td>{{ producte.ProdTalla }}</td>
-          <td>{{ producte.ProdPreu | currency: 'EUR' }}</td>
+          <td>{{ producte.ProdPreu |  currency: 'EUR' }}</td>
           <td>
             <i [routerLink]="['/editar-producte', producte._id]"  class="fa-solid fa-pen-to-square"></i>
             <i (click)="eliminarProducte(producte._id)" class="fa-solid fa-trash"></i>
