@@ -15,15 +15,6 @@ export class CrearProducteComponent implements OnInit{
   AddProductForm: FormGroup;
   titol_page = 'CREAR PRODUCTE';
 
-  /* Funciona con lo de abajo tambien comentado
-  ProducteID = 'ID del producte';
-  ProducteNom= 'Nom del producte';
-  ProducteAfegits= 'Numero de productes afegits';
-  ProductePreu= 'Preu';
-  ProducteTalla= 'Talla del producte';
-  ProducteDescripcio= 'Descripció del producte';
-  ProducteImatge= 'Afegir imatge';*/
-
   id: string | null;
 
   constructor(private fb: FormBuilder, private router: Router, private _producteService: ProducteService, private aRouter: ActivatedRoute) {
@@ -95,7 +86,7 @@ export class CrearProducteComponent implements OnInit{
           TallaProd: data.ProdTalla,
           DescripcioProd: data.ProdDescripcio,
           TipusProd: data.ProdTipus,
-          Esport: data.ProdEsport,
+          Esport: data.ProdEsport.toString(),
           Imatge: data.ProdImatge,
         })
 

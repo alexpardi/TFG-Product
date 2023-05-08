@@ -7,10 +7,10 @@ export class AddProducte{
   ProdTalla: number;
   ProdDescripcio: string;
   ProdTipus: string;
-  ProdEsport: object;
+  ProdEsport: string[];
   ProdImatge: string;
 
-  constructor(ProdID: string, ProdNom: string, ProdAfegits: number, ProdPreu: number, ProdTalla: number, ProdDescripcio: string, ProdTipus: string, ProdEsport: object, ProdImatge: string) {
+  constructor(ProdID: string, ProdNom: string, ProdAfegits: number, ProdPreu: number, ProdTalla: number, ProdDescripcio: string, ProdTipus: string, ProdEsport: string[], ProdImatge: string) {
     this.ProdID = ProdID;
     this.ProdNom = ProdNom;
     this.ProdAfegits = ProdAfegits;
