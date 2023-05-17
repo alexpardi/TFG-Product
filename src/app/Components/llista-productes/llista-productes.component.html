@@ -15,8 +15,7 @@
         <tr>
           <th scope="col">ID Producto</th>
           <th scope="col">Nom del producte</th>
-          <th scope="col">Quantitat</th>
-          <th scope="col">Talla</th>
+          <th scope="col">Marca</th>
           <th scope="col">Preu</th>
           <th scope="col"></th>
         </tr>
@@ -25,8 +24,7 @@
         <tr *ngFor= "let producte of listProductes | filter:searchText">
           <th scope="row">{{ producte.ProdID }}</th>
           <td>{{ producte.ProdNom }}</td>
-          <td>{{ producte.ProdAfegits }}</td>
-          <td>{{ producte.ProdTalla }}</td>
+          <td>{{ producte.ProdMarca }}</td>
           <td>{{ producte.ProdPreu |  currency: 'EUR' }}</td>
           <td>
             <i [routerLink]="['/editar-producte', producte._id]"  class="fa-solid fa-pen-to-square"></i>

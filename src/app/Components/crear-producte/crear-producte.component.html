@@ -35,17 +35,19 @@
               <span>Camp obligatori</span>
             </div>
           </div>
+
           <div class="col">
-            <span *ngIf="AddProductForm.get('TallaProd')?.value" class="float-start" style="font-size: 20px">Talla del producte:</span>
-            <input type="number" min="0" oninput="validity.valid" class="form-control form-control-lg" placeholder="Talla del producte" formControlName="TallaProd" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
-            <div class="text-danger" *ngIf="AddProductForm.get('TallaProd')?.hasError('required') && AddProductForm.get('TallaProd')?.touched">
+            <span *ngIf="AddProductForm.get('Marca')?.value" class="float-start" style="font-size: 20px">Afegir nom marca:</span>
+            <input type="text" class="form-control form-control-lg" placeholder="Afegir nom marca" formControlName="Marca" maxlength="20">
+            <div class="text-danger" *ngIf="AddProductForm.get('Marca')?.hasError('required') && AddProductForm.get('Marca')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
+
           <div class="col">
-            <span *ngIf="AddProductForm.get('ProdAfegits')?.value" class="float-start" style="font-size: 20px">Numero de productes afegits:</span>
-            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Numero de productes afegits" formControlName="ProdAfegits" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
-            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits')?.hasError('required') && AddProductForm.get('ProdAfegits')?.touched">
+            <span *ngIf="AddProductForm.get('Imatge')?.value" class="float-start" style="font-size: 20px">Afegir nom imatge:</span>
+            <input type="text" accept="image/png, image/jpeg" class="form-control form-control-lg" placeholder="Afegir nom imatge" formControlName="Imatge">
+            <div class="text-danger" *ngIf="AddProductForm.get('Imatge')?.hasError('required') && AddProductForm.get('Imatge')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
@@ -53,7 +55,7 @@
 
         <div class="row mb-3">
           <div class="col">
-            <span class="float-start" style="font-size: 20px">Esport:</span>
+            <span class="float-start" style="font-size: 20px">Esports:</span>
             <select class="form-control form-control-lg" formControlName="Esport" multiple>
               <option value="Córrer">Córrer</option>
               <option value="Ciclisme">Ciclisme</option>
@@ -85,23 +87,135 @@
               <span>Camp obligatori</span>
             </div>
           </div>
-          <div class="col">
-            <span *ngIf="AddProductForm.get('Marca')?.value" class="float-start" style="font-size: 20px">Afegir nom marca:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Afegir nom marca" formControlName="Marca" maxlength="20">
-            <div class="text-danger" *ngIf="AddProductForm.get('Marca')?.hasError('required') && AddProductForm.get('Marca')?.touched">
+
+          <div class="col" *ngIf="AddProductForm.get('TipusProd')?.value == 'Raqueta' || AddProductForm.get('TipusProd')?.value == '' ">
+            <span *ngIf="AddProductForm.get('ProdAfegits')?.value" class="float-start" style="font-size: 20px">Talla única:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla única" formControlName="ProdAfegits" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits')?.value == '' && AddProductForm.get('ProdAfegits')?.touched">
               <span>Camp obligatori</span>
             </div>
           </div>
-          <div class="col">
-            <span *ngIf="AddProductForm.get('Imatge')?.value" class="float-start" style="font-size: 20px">Afegir nom imatge:</span>
-            <input type="text" accept="image/png, image/jpeg" class="form-control form-control-lg" placeholder="Afegir nom imatge" formControlName="Imatge">
-            <div class="text-danger" *ngIf="AddProductForm.get('Imatge')?.hasError('required') && AddProductForm.get('Imatge')?.touched">
-              <span>Camp obligatori</span>
-            </div>
-          </div>
-          <a *ngIf="isVisibleMP" class="text-danger" style="text-align: center">El producte ja existeix o no s'ha pogut crear de manera correcte.</a>
-          <a *ngIf="isVisibleCP" class="text-danger" style="text-align: center">El producte ja existeix o no s'ha pogut crear de manera correcte.</a>
+          <!--a *ngIf="isVisibleMP" class="text-danger" style="text-align: center">El producte ja existeix o no s'ha pogut crear de manera correcte.</a>
+          <a *ngIf="isVisibleCP" class="text-danger" style="text-align: center">El producte ja existeix o no s'ha pogut crear de manera correcte.</a-->
         </div>
+
+
+
+
+
+        <div class="row mb-3" *ngIf="AddProductForm.get('TipusProd')?.value == 'Samarreta' || AddProductForm.get('TipusProd')?.value == 'Pantalons' || AddProductForm.get('TipusProd')?.value == 'Culotte' || AddProductForm.get('TipusProd')?.value == 'Mallot' || AddProductForm.get('TipusProd')?.value == 'Bicicleta' || AddProductForm.get('TipusProd')?.value == 'Esquís'">
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegitsS')?.value" class="float-start" style="font-size: 20px">Talla S:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla S" formControlName="ProdAfegitsS" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegitsS')?.value == '' && AddProductForm.get('ProdAfegitsS')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegitsM')?.value" class="float-start" style="font-size: 20px">Talla M:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla M" formControlName="ProdAfegitsM" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegitsM')?.value == '' && AddProductForm.get('ProdAfegitsM')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegitsL')?.value" class="float-start" style="font-size: 20px">Talla L:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla L" formControlName="ProdAfegitsL" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegitsL')?.value == '' && AddProductForm.get('ProdAfegitsL')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegitsXL')?.value" class="float-start" style="font-size: 20px">Talla XL:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla XL" formControlName="ProdAfegitsXL" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegitsXL')?.value == '' && AddProductForm.get('ProdAfegitsXL')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="row mb-3" *ngIf="AddProductForm.get('TipusProd')?.value == 'Sabates' || AddProductForm.get('TipusProd')?.value == 'BotaEsquí'">
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits37')?.value" class="float-start" style="font-size: 20px">Talla 37:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 37" formControlName="ProdAfegits37" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits37')?.value == '' && AddProductForm.get('ProdAfegits37')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits38')?.value" class="float-start" style="font-size: 20px">Talla 38:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 38" formControlName="ProdAfegits38" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits38')?.value == '' && AddProductForm.get('ProdAfegits38')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits39')?.value" class="float-start" style="font-size: 20px">Talla 39:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 39" formControlName="ProdAfegits39" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits39')?.value == '' && AddProductForm.get('ProdAfegits39')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits40')?.value" class="float-start" style="font-size: 20px">Talla 40:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 40" formControlName="ProdAfegits40" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits40')?.value == '' && AddProductForm.get('ProdAfegits40')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits41')?.value" class="float-start" style="font-size: 20px">Talla 41:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 41" formControlName="ProdAfegits41" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits41')?.value == '' && AddProductForm.get('ProdAfegits41')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits42')?.value" class="float-start" style="font-size: 20px">Talla 42:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 42" formControlName="ProdAfegits42" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits42')?.value == '' && AddProductForm.get('ProdAfegits42')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits43')?.value" class="float-start" style="font-size: 20px">Talla 43:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 43" formControlName="ProdAfegits43" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits43')?.value == '' && AddProductForm.get('ProdAfegits43')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits44')?.value" class="float-start" style="font-size: 20px">Talla 44:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 44" formControlName="ProdAfegits44" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits44')?.value == '' && AddProductForm.get('ProdAfegits44')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+          <div class="col">
+            <span *ngIf="AddProductForm.get('ProdAfegits45')?.value" class="float-start" style="font-size: 20px">Talla 45:</span>
+            <input type="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" class="form-control form-control-lg" placeholder="Talla 45" formControlName="ProdAfegits45" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10">
+            <div class="text-danger" *ngIf="AddProductForm.get('ProdAfegits45')?.value == '' && AddProductForm.get('ProdAfegits45')?.touched">
+              <span>Camp obligatori</span>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <a *ngIf="isVisibleMP" class="text-danger" style="text-align: center">El producte ja existeix o no s'ha pogut crear de manera correcte.</a>
+        <a *ngIf="isVisibleCP" class="text-danger" style="text-align: center">El producte ja existeix o no s'ha pogut crear de manera correcte.</a>
+
+
+
+
+
+
 
         <div class="mb-3">
           <div class="text-warning " *ngIf="AddProductForm.invalid">

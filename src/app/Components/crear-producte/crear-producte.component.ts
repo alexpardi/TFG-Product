@@ -22,14 +22,27 @@ export class CrearProducteComponent implements OnInit{
     this.AddProductForm=this.fb.group({
       IdProducte: ['', Validators.required],
       NomProducte: ['', Validators.required],
-      ProdAfegits: ['', Validators.required],
       PreuProd: ['', Validators.required],
-      TallaProd: ['', Validators.required],
       DescripcioProd: ['', Validators.required],
       TipusProd: ['', Validators.required],
       Esport: ['', Validators.required],
       Marca: ['', Validators.required],
       Imatge: ['', Validators.required],
+
+      ProdAfegits: [''],
+      ProdAfegitsS: [''],
+      ProdAfegitsM: [''],
+      ProdAfegitsL: [''],
+      ProdAfegitsXL: [''],
+      ProdAfegits37: [''],
+      ProdAfegits38: [''],
+      ProdAfegits39: [''],
+      ProdAfegits40: [''],
+      ProdAfegits41: [''],
+      ProdAfegits42: [''],
+      ProdAfegits43: [''],
+      ProdAfegits44: [''],
+      ProdAfegits45: [''],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
     this.isVisibleCP=false;
@@ -41,17 +54,40 @@ export class CrearProducteComponent implements OnInit{
   }
 
   AddProduct(){
+
+    const value = this.AddProductForm.get('Esport')?.value;
+    var usingSplit = [];
+    if(Array.isArray(value)){
+      usingSplit = value;
+    }else{
+      usingSplit = value.split(',');
+    }
+
     const PRODUCTE: AddProducte = {
       ProdID: this.AddProductForm.get('IdProducte')?.value,
       ProdNom: this.AddProductForm.get('NomProducte')?.value,
-      ProdAfegits: this.AddProductForm.get('ProdAfegits')?.value,
       ProdPreu: this.AddProductForm.get('PreuProd')?.value,
-      ProdTalla: this.AddProductForm.get('TallaProd')?.value,
       ProdDescripcio: this.AddProductForm.get('DescripcioProd')?.value,
       ProdTipus: this.AddProductForm.get('TipusProd')?.value,
-      ProdEsport: this.AddProductForm.get('Esport')?.value,
+      ProdEsport: usingSplit,
       ProdMarca: this.AddProductForm.get('Marca')?.value,
       ProdImatge: this.AddProductForm.get('Imatge')?.value,
+
+      ProdAfegits: this.AddProductForm.get('ProdAfegits')?.value,
+      ProdAfegitsS: this.AddProductForm.get('ProdAfegitsS')?.value,
+      ProdAfegitsM: this.AddProductForm.get('ProdAfegitsM')?.value,
+      ProdAfegitsL: this.AddProductForm.get('ProdAfegitsL')?.value,
+      ProdAfegitsXL: this.AddProductForm.get('ProdAfegitsXL')?.value,
+      ProdAfegits37: this.AddProductForm.get('ProdAfegits37')?.value,
+      ProdAfegits38: this.AddProductForm.get('ProdAfegits38')?.value,
+      ProdAfegits39: this.AddProductForm.get('ProdAfegits39')?.value,
+      ProdAfegits40: this.AddProductForm.get('ProdAfegits40')?.value,
+      ProdAfegits41: this.AddProductForm.get('ProdAfegits41')?.value,
+      ProdAfegits42: this.AddProductForm.get('ProdAfegits42')?.value,
+      ProdAfegits43: this.AddProductForm.get('ProdAfegits43')?.value,
+      ProdAfegits44: this.AddProductForm.get('ProdAfegits44')?.value,
+      ProdAfegits45: this.AddProductForm.get('ProdAfegits45')?.value,
+
     }
 
     /*
@@ -111,14 +147,27 @@ export class CrearProducteComponent implements OnInit{
         this.AddProductForm=this.fb.group({
           IdProducte: data.ProdID,
           NomProducte: data.ProdNom,
-          ProdAfegits: data.ProdAfegits,
           PreuProd: data.ProdPreu,
-          TallaProd: data.ProdTalla,
           DescripcioProd: data.ProdDescripcio,
           TipusProd: data.ProdTipus,
           Esport: data.ProdEsport.toString(),
           Marca: data.ProdMarca,
           Imatge: data.ProdImatge,
+
+          ProdAfegits: data.ProdAfegits,
+          ProdAfegitsS: data.ProdAfegitsS,
+          ProdAfegitsM: data.ProdAfegitsM,
+          ProdAfegitsL: data.ProdAfegitsL,
+          ProdAfegitsXL: data.ProdAfegitsXL,
+          ProdAfegits37: data.ProdAfegits37,
+          ProdAfegits38: data.ProdAfegits38,
+          ProdAfegits39: data.ProdAfegits39,
+          ProdAfegits40: data.ProdAfegits40,
+          ProdAfegits41: data.ProdAfegits41,
+          ProdAfegits42: data.ProdAfegits42,
+          ProdAfegits43: data.ProdAfegits43,
+          ProdAfegits44: data.ProdAfegits44,
+          ProdAfegits45: data.ProdAfegits45,
         })
 
         console.log(data);
