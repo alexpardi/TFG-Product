@@ -1,56 +1,5 @@
 <div class="row">
-  <div class="col" style="border-color: gray"  >
-    <div class="card" style="width: 70%;" >
-      <div class="card-body text-center border-4">
-        <span class="titulo">REGISTRAR-SE</span>
-        <form class="mt-4" [formGroup]="AddUserForm" (ngSubmit)="AddUsuari()" >
-          <div class="mb-3">
-            <span *ngIf="AddUserForm.get('CreaUsuari')?.value" class="float-start" style="font-size: 20px">Nom d'usuari:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Nom d'usuari" formControlName="CreaUsuari">
-            <div class="text-danger" *ngIf="AddUserForm.get('CreaUsuari')?.hasError('required') && AddUserForm.get('CreaUsuari')?.touched">
-              <span>Camp obligatori</span>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <span *ngIf="AddUserForm.get('CreaEmail')?.value" class="float-start" style="font-size: 20px">Correu electrònic:</span>
-            <input type="email" ngModel email class="form-control form-control-lg" placeholder="Correu electrònic" formControlName="CreaEmail" >
-            <div class="text-danger" *ngIf="AddUserForm.get('CreaEmail')?.hasError('required') && AddUserForm.get('CreaEmail')?.touched">
-              <span>Camp obligatori</span>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <span *ngIf="AddUserForm.get('CreaNom')?.value" class="float-start" style="font-size: 20px">Nom:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Nom" formControlName="CreaNom">
-            <div class="text-danger" *ngIf="AddUserForm.get('CreaNom')?.hasError('required') && AddUserForm.get('CreaNom')?.touched">
-              <span>Camp obligatori</span>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <span *ngIf="AddUserForm.get('CreaContrasenya')?.value" class="float-start" style="font-size: 20px">Contrasenya:</span>
-            <input type="password" class="form-control form-control-lg" placeholder="Contrasenya" formControlName="CreaContrasenya">
-            <div class="text-danger" *ngIf="AddUserForm.get('CreaContrasenya')?.hasError('CreaContrasenya') && AddUserForm.get('CreaContrasenya')?.touched">
-              <span>Camp obligatori</span>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col">
-              <button type="submit" [disabled]="AddUserForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
-            </div>
-            <div class="col">
-              <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col" style="border-color: gray"  >
+    <div class="col" style="border-color: gray"  >
     <div class="card" style="width: 70%;" >
       <div class="card-body text-center border-4">
 
@@ -71,6 +20,7 @@
               <span>Camp obligatori</span>
             </div>
           </div>
+          <a *ngIf="isVisibleIS" class="text-danger" style="text-align: center">L'usuari o la contrasenya son incorrectes.</a>
 
           <div class="row mb-3">
             <div class="col">

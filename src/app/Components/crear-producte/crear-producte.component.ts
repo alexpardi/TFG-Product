@@ -14,7 +14,8 @@ import {ProducteService} from "../../servei/producte.service";
 export class CrearProducteComponent implements OnInit{
   AddProductForm: FormGroup;
   titol_page = 'CREAR PRODUCTE';
-
+  isVisibleMP: boolean;
+  isVisibleCP: boolean;
   id: string | null;
 
   constructor(private fb: FormBuilder, private router: Router, private _producteService: ProducteService, private aRouter: ActivatedRoute) {
@@ -27,9 +28,12 @@ export class CrearProducteComponent implements OnInit{
       DescripcioProd: ['', Validators.required],
       TipusProd: ['', Validators.required],
       Esport: ['', Validators.required],
+      Marca: ['', Validators.required],
       Imatge: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
+    this.isVisibleCP=false;
+    this.isVisibleMP=false;
   }
 
   ngOnInit(): void{
@@ -46,8 +50,26 @@ export class CrearProducteComponent implements OnInit{
       ProdDescripcio: this.AddProductForm.get('DescripcioProd')?.value,
       ProdTipus: this.AddProductForm.get('TipusProd')?.value,
       ProdEsport: this.AddProductForm.get('Esport')?.value,
+      ProdMarca: this.AddProductForm.get('Marca')?.value,
       ProdImatge: this.AddProductForm.get('Imatge')?.value,
     }
+
+    /*
+    // Revisar esta parte de actualizar productos
+    const usingSplit = this.AddProductForm.get('Esport')?.value.split(',');
+    const PRODUCTE: AddProducte = {
+      ProdID: this.AddProductForm.get('IdProducte')?.value,
+      ProdNom: this.AddProductForm.get('NomProducte')?.value,
+      ProdAfegits: this.AddProductForm.get('ProdAfegits')?.value,
+      ProdPreu: this.AddProductForm.get('PreuProd')?.value,
+      ProdTalla: this.AddProductForm.get('TallaProd')?.value,
+      ProdDescripcio: this.AddProductForm.get('DescripcioProd')?.value,
+      ProdTipus: this.AddProductForm.get('TipusProd')?.value,
+      ProdEsport: usingSplit,
+      ProdMarca: this.AddProductForm.get('Marca')?.value,
+      ProdImatge: this.AddProductForm.get('Imatge')?.value,
+    }*/
+
 
     if(this.id != null){
       //editem producte
@@ -56,7 +78,11 @@ export class CrearProducteComponent implements OnInit{
       }, error => {
         console.log(error);
         //this.AddProductForm.reset();
-        alert("El producte ja existeix o no s'ha pogut crear de manera correcte.");
+        //alert("El producte ja existeix o no s'ha pogut crear de manera correcte.");
+        this.isVisibleMP = true;
+        setTimeout(() => {
+          this.isVisibleMP = false;
+        }, 5000);
       })
     }else{
       //afegim producte
@@ -66,7 +92,11 @@ export class CrearProducteComponent implements OnInit{
       }, error => {
         console.log(error);
         //this.AddProductForm.reset();
-        alert("El producte ja existeix o no s'ha pogut crear de manera correcte.");
+        //alert("El producte ja existeix o no s'ha pogut crear de manera correcte.");
+        this.isVisibleCP = true;
+        setTimeout(() => {
+          this.isVisibleCP = false;
+        }, 5000);
       })
     }
 
@@ -87,6 +117,7 @@ export class CrearProducteComponent implements OnInit{
           DescripcioProd: data.ProdDescripcio,
           TipusProd: data.ProdTipus,
           Esport: data.ProdEsport.toString(),
+          Marca: data.ProdMarca,
           Imatge: data.ProdImatge,
         })
 

@@ -18,6 +18,8 @@ export class ModificaUsuariComponent implements OnInit{
   modiUserForm: FormGroup;
 
   id: string | null;
+  isVisibleMU: boolean;
+
 
   constructor(private fb: FormBuilder, private router: Router, public ProducteService: ProducteService, private aRouter: ActivatedRoute) {
     this.modiUserForm=this.fb.group({
@@ -28,6 +30,7 @@ export class ModificaUsuariComponent implements OnInit{
       ModContrasenya: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
+    this.isVisibleMU=false;
   }
 
   ngOnInit(): void{
@@ -47,7 +50,11 @@ export class ModificaUsuariComponent implements OnInit{
     }, error => {
       console.log(error);
       //this.AddProductForm.reset();
-      alert("No s'ha pogut modificar l'usuari.");
+      //alert("No s'ha pogut modificar l'usuari.");
+      this.isVisibleMU = true;
+      setTimeout(() => {
+        this.isVisibleMU = false;
+      }, 5000);
     })
 
   }
@@ -75,11 +82,6 @@ export class ModificaUsuariComponent implements OnInit{
 
       let part = Object(tokenInfo).UserName;
       return part
-      //const userN = JSON.stringify(tokenInfo);
-      //getting the id
-      // let part = userN.slice(7, 31);
-      //6441baa8c134e42e6a05fbbf
-      //alert(part);
     }
   }
 

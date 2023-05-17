@@ -19,6 +19,14 @@
 <div class="row">
 
   <div class="col" style="border-color: gray"  >
+    <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/crear-producte" type="button" >
+      <div class="card-body text-center ">
+        <span   class="titulo">AFEGIR NOUS PRODUCTES</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col" style="border-color: gray"  >
     <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/llistar-productes" type="button" >
       <div class="card-body text-center ">
         <span   class="titulo">VEURE LLISTAT DE PRODUCTES</span>
@@ -27,9 +35,9 @@
   </div>
 
   <div class="col" style="border-color: gray"  >
-    <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/crear-producte" type="button" >
+    <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/crear-usuari" type="button" >
       <div class="card-body text-center ">
-        <span   class="titulo">AFEGIR NOUS PRODUCTES</span>
+        <span   class="titulo">AFEGIR NOU USUARI</span>
       </div>
     </div>
   </div>

@@ -8,12 +8,14 @@ import { CrearProducteComponent } from './Components/crear-producte/crear-produc
 import { LlistaProductesComponent } from './Components/llista-productes/llista-productes.component';
 import { ModificaUsuariComponent } from './Components/modifica-usuari/modifica-usuari.component';
 
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{ HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { IniciarUsuariComponent } from './Components/iniciar-usuari/iniciar-usuari.component'
 import {AuthGuard} from "./auth.guard";
 import { TokenInterceptorService } from "./servei/token-interceptor.service";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AfegirUsuariComponent } from './Components/afegir-usuari/afegir-usuari.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,17 @@ import { TokenInterceptorService } from "./servei/token-interceptor.service";
     CrearProducteComponent,
     LlistaProductesComponent,
     ModificaUsuariComponent,
-    IniciarUsuariComponent
+    IniciarUsuariComponent,
+    AfegirUsuariComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
   ],
   providers: [AuthGuard,
     {

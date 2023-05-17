@@ -4,6 +4,12 @@
     <div class="card-body text-center">
       <span class="titulo">LLISTAT DE PRODUCTES</span>
 
+      <div class="search-name">
+        <input class="form-control" type="text" name="search"
+               [(ngModel)]="searchText" autocomplete="on"
+               placeholder=" Què vols trobar? " maxlength="50" style="width: auto">
+      </div>
+
       <table class="table table-dark table-striped mt-4">
         <thead>
         <tr>
@@ -16,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor= "let producte of listProductes">
+        <tr *ngFor= "let producte of listProductes | filter:searchText">
           <th scope="row">{{ producte.ProdID }}</th>
           <td>{{ producte.ProdNom }}</td>
           <td>{{ producte.ProdAfegits }}</td>
@@ -34,3 +40,4 @@
     </div>
   </div>
 </div>
+

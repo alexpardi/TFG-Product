@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {ProducteService} from "../../servei/producte.service";
 import {AddProducte} from "src/app/model/AddProducte"
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {query} from "@angular/animations";
+import {debounceTime} from "rxjs";
 
 @Component({
   selector: 'app-llista-productes',
@@ -9,8 +12,8 @@ import {AddProducte} from "src/app/model/AddProducte"
 })
 export class LlistaProductesComponent {
   listProductes: AddProducte[] = [];
-
-  constructor(private _producteService: ProducteService) {
+  searchText: any;
+  constructor( private _producteService: ProducteService) {
   }
 
   ngOnInit(): void{
