@@ -16,6 +16,7 @@ import {AuthGuard} from "./auth.guard";
 import { TokenInterceptorService } from "./servei/token-interceptor.service";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AfegirUsuariComponent } from './Components/afegir-usuari/afegir-usuari.component';
+import { ComandesComponent } from './Components/comandes/comandes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AfegirUsuariComponent } from './Components/afegir-usuari/afegir-usuari.
     LlistaProductesComponent,
     ModificaUsuariComponent,
     IniciarUsuariComponent,
-    AfegirUsuariComponent
+    AfegirUsuariComponent,
+    ComandesComponent
   ],
   imports: [
     BrowserModule,

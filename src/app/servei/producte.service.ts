@@ -12,10 +12,12 @@ import {Router, RouterLink} from "@angular/router";
 })
 export class ProducteService {
   urlP = 'http://localhost:4000/api/productes/';
-  urlU = 'http://localhost:4000/api/user/creaUsuari';
+  urlCU = 'http://localhost:4000/api/user/creaUsuari';
+  urlU = 'http://localhost:4000/api/user/eliminaUser';
   urlUI = 'http://localhost:4000/api/user/iniciaSessio';
   urlMU = 'http://localhost:4000/api/user/modificaUsuari';
   urlEU = 'http://localhost:4000/api/user/getUsuari';
+  urlGC = 'http://localhost:4000/api/user/getComanda';
 
   constructor(private http: HttpClient) { }
 
@@ -40,7 +42,7 @@ export class ProducteService {
   }
 
   crearUsuari(user: AddUser): Observable<any>{
-    return this.http.post(this.urlU, user);
+    return this.http.post(this.urlCU, user);
   }
 
   modificaUsuari(user: modiUser): Observable<any>{
@@ -67,6 +69,12 @@ export class ProducteService {
     if(confirm('Estas segur que vols tancar la sessió?')) {
       localStorage.removeItem('token');
     }
+  }
+  eliminarUsuari(user: Inicisessio): Observable<any>{
+    return this.http.put(this.urlU, user);
+  }
+  getComanda(): Observable<any>{
+    return this.http.get(this.urlGC);
   }
 
 }

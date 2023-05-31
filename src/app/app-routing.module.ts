@@ -6,6 +6,7 @@ import {ModificaUsuariComponent} from "./Components/modifica-usuari/modifica-usu
 import {IniciarUsuariComponent} from "./Components/iniciar-usuari/iniciar-usuari.component";
 import {AuthGuard} from "./auth.guard";
 import {AfegirUsuariComponent} from "./Components/afegir-usuari/afegir-usuari.component";
+import {ComandesComponent} from "./Components/comandes/comandes.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'editar-producte/:id', component: CrearProducteComponent, canActivate: [AuthGuard]},
   { path: 'modifica-usuari', component: ModificaUsuariComponent, canActivate: [AuthGuard]},
   { path: 'crear-usuari', component: AfegirUsuariComponent, canActivate: [AuthGuard]},
+  { path: 'comandes', component: ComandesComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

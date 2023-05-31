@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProducteService} from "../../servei/producte.service";
 import {AddUser} from "../../model/AddUser";
+import {Inicisessio} from "../../model/Inicisessio";
 
 @Component({
   selector: 'app-afegir-usuari',
@@ -11,9 +12,12 @@ import {AddUser} from "../../model/AddUser";
 })
 export class AfegirUsuariComponent {
   AddUserForm: FormGroup;
+  DelUserForm: FormGroup;
 
   isVisibleCU: boolean;
   isVisibleCUC: boolean;
+  isVisibleEU: boolean;
+  isVisibleEUC: boolean;
 
   constructor(private fb: FormBuilder, private router: Router, private _producteService: ProducteService, private aRouter: ActivatedRoute) {
     this.AddUserForm=this.fb.group({
@@ -22,8 +26,13 @@ export class AfegirUsuariComponent {
       CreaNom: ['', Validators.required],
       CreaContrasenya: ['', Validators.required],
     });
+    this.DelUserForm=this.fb.group({
+      DelUser: ['', Validators.required],
+    });
     this.isVisibleCU=false;
     this.isVisibleCUC=false;
+    this.isVisibleEU=false;
+    this.isVisibleEUC=false;
   }
 
   AddUsuari() {
@@ -51,6 +60,29 @@ export class AfegirUsuariComponent {
       this.isVisibleCU = true;
       setTimeout(() => {
         this.isVisibleCU = false;
+      }, 5000);
+    })
+
+  }
+
+  DelUsuari(){
+    const USUARI: Inicisessio = {
+      UserName: this.DelUserForm.get('DelUser')?.value,
+      UserContrasenya: "",
+    }
+
+    this._producteService.eliminarUsuari(USUARI).subscribe(res => {
+      console.log(res);
+      this.DelUserForm.reset();
+      this.isVisibleEUC = true;
+      setTimeout(() => {
+        this.isVisibleEUC = false;
+      }, 5000);
+    }, error => {
+      console.log(error);
+      this.isVisibleEU = true;
+      setTimeout(() => {
+        this.isVisibleEU = false;
       }, 5000);
     })
 

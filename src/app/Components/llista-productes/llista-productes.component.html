@@ -4,19 +4,34 @@
     <div class="card-body text-center">
       <span class="titulo">LLISTAT DE PRODUCTES</span>
 
-      <div class="search-name">
-        <input class="form-control" type="text" name="search"
-               [(ngModel)]="searchText" autocomplete="on"
-               placeholder=" Què vols trobar? " maxlength="50" style="width: auto">
+      <div class="row">
+        <div class="col-7 search-name">
+          <input class="form-control" type="text" name="search"
+                 [(ngModel)]="searchText" autocomplete="on"
+                 placeholder=" Què vols trobar? " maxlength="70" style="width: auto; height: 50px">
+        </div>
+
+        <div class="col-3" style="margin-left: auto; width: auto">
+          <div class="dropdown">
+            <button class="botn">Ordenar per</button>
+            <div class="dropdown-options">
+              <a (click)="obtenirProductes(1)">Id</a>
+              <a (click)="obtenirProductes(2)">Nom del producte</a>
+              <a (click)="obtenirProductes(3)">Marca</a>
+              <a (click)="obtenirProductes(4)">Preu (menys a més)</a>
+              <a (click)="obtenirProductes(5)">Preu (més a menys)</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <table class="table table-dark table-striped mt-4">
+      <table class="table table-striped mt-4">
         <thead>
         <tr>
-          <th scope="col">ID Producto</th>
-          <th scope="col">Nom del producte</th>
-          <th scope="col">Marca</th>
-          <th scope="col">Preu</th>
+          <th scope="col" (click)="ordenar=1">ID Producto</th>
+          <th scope="col" (click)="ordenar=2; reload()">Nom del producte</th>
+          <th scope="col" (click)="ordenar=3">Marca</th>
+          <th scope="col" (click)="ordenar=4">Preu</th>
           <th scope="col"></th>
         </tr>
         </thead>

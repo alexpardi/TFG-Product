@@ -2,15 +2,15 @@
 
 <div class="container">
   <div class="row" >
-    <div class="col">
-      <img src="assets/logo_image.png" class="header rounded float-left" width="150" vspace="10" >
+    <div class="col-3">
+      <img src="assets/logo.png" class="header rounded float-left" width="60%" vspace="10" >
     </div>
-    <div class="col text-center text-xl-center my-4" style="width: 50%;">
-      <h1 class="header-title justify-content-center d-flex">ALEX TFG</h1>
+    <div class="col text-center my-3" >
+      <h1 class="header-title" style="font-size: 4.9vw">TOTESPORT</h1>
     </div>
-    <div class="col my-3" >
+    <div class="col-3 my-2" >
       <button class="btn btn-primary list-unstyled border-0 float-end" *ngIf="ProducteService.loggedIn()" routerLink="/modifica-usuari" style="background-color: white">
-        <img src="assets/user.png" class="userheader rounded float-right" width="90" height="90" hspace="15">
+        <img src="assets/user.png" class="userheader rounded float-right" width="50%"  hspace="15">
       </button>
     </div>
   </div>
@@ -21,7 +21,7 @@
   <div class="col" style="border-color: gray"  >
     <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/crear-producte" type="button" >
       <div class="card-body text-center ">
-        <span   class="titulo">AFEGIR NOUS PRODUCTES</span>
+        <span class="titulo" style="font-size: 2vw">Afegir productes</span>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
   <div class="col" style="border-color: gray"  >
     <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/llistar-productes" type="button" >
       <div class="card-body text-center ">
-        <span   class="titulo">VEURE LLISTAT DE PRODUCTES</span>
+        <span class="titulo" style="font-size: 2vw">Llistat productes</span>
       </div>
     </div>
   </div>
@@ -37,7 +37,15 @@
   <div class="col" style="border-color: gray"  >
     <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/crear-usuari" type="button" >
       <div class="card-body text-center ">
-        <span   class="titulo">AFEGIR NOU USUARI</span>
+        <span class="titulo" style="font-size: 2vw">Gestió treballadors</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col" style="border-color: gray"  >
+    <div class="card border-5" style="width: 90%;" *ngIf="ProducteService.loggedIn()" routerLink="/comandes" type="button" >
+      <div class="card-body text-center ">
+        <span class="titulo" style="font-size: 2vw">Comandes</span>
       </div>
     </div>
   </div>
