@@ -2,15 +2,13 @@
 <div class="">
   <div class="row">
     <div class="col" *ngFor= "let comanda of listComandes">
-      <div class="container row">
+      <br>
+      <div class="container row" *ngIf="comanda.realitzada == 'falso'" style="background-color: lightcoral">
         <h5>Client: {{ comanda.UserName }}</h5>
-        <a>Emial: {{ comanda.UserMail }}</a><br>
-        <a>Nom: {{ comanda.UserNameReal }}</a><br>
-        <a>Pais: {{ comanda.Pais }}</a><br>
-        <a>Ciutat: {{ comanda.Ciutat }}</a><br>
-        <a>Codi Postal: {{ comanda.CodiPostal }}</a><br>
-        <a>Carrer i número: {{ comanda.CarrerNum }}</a><br>
-        <a>Número de telèfon: {{ comanda.NumeroTelf }}</a><br>
+        <a><strong>Email:</strong> {{ comanda.UserMail }} <strong>Nom:</strong> {{ comanda.UserNameReal }}</a>
+        <a><strong>Pais:</strong> {{ comanda.Pais }} <strong>Ciutat:</strong> {{ comanda.Ciutat }} <strong>Codi Postal:</strong> {{ comanda.CodiPostal }}</a>
+        <a><strong>Carrer i número:</strong> {{ comanda.CarrerNum }}</a>
+        <a><strong>Número de telèfon:</strong> {{ comanda.NumeroTelf }}</a>
 
         <div class="row">
           <table class="col table table-striped mt-4">
@@ -29,7 +27,7 @@
           <table class="col table table-striped mt-4">
             <thead>
             <tr>
-              <th scope="col">Talla del producte</th>
+              <th scope="col">Talla</th>
             </tr>
             </thead>
             <tbody>
@@ -42,7 +40,7 @@
           <table class="col table table-striped mt-4">
             <thead>
             <tr>
-              <th scope="col">Quantitat de productes</th>
+              <th scope="col">Quantitat</th>
             </tr>
             </thead>
             <tbody>
@@ -52,7 +50,61 @@
             </tbody>
           </table>
         </div>
+        <a><strong> Estat: PENDENT DE REALITZAR.</strong></a><br>
+        <button style="width: auto; margin: auto" (click)="realitzaComanda(comanda._id)">Pas a realitzada</button>
       </div>
-    </div>
+
+      <div class="container row" *ngIf="comanda.realitzada == 'true'" style="background-color: lightgreen">
+        <h5>Client: {{ comanda.UserName }}</h5>
+        <a><strong>Email:</strong> {{ comanda.UserMail }} <strong>Nom:</strong> {{ comanda.UserNameReal }}</a>
+        <a><strong>Pais:</strong> {{ comanda.Pais }} <strong>Ciutat:</strong> {{ comanda.Ciutat }} <strong>Codi Postal:</strong> {{ comanda.CodiPostal }}</a>
+        <a><strong>Carrer i número:</strong> {{ comanda.CarrerNum }}</a>
+        <a><strong>Número de telèfon:</strong> {{ comanda.NumeroTelf }}</a>
+
+        <div class="row">
+          <table class="col table table-striped mt-4">
+            <thead>
+            <tr>
+              <th scope="col">ID Producto</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor= "let prod of comanda.LlistaProductes">
+              <td>{{ prod }}</td>
+            </tr>
+            </tbody>
+          </table>
+
+          <table class="col table table-striped mt-4">
+            <thead>
+            <tr>
+              <th scope="col">Talla</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor= "let prod of comanda.TallaProductes">
+              <td>{{ prod }}</td>
+            </tr>
+            </tbody>
+          </table>
+
+          <table class="col table table-striped mt-4">
+            <thead>
+            <tr>
+              <th scope="col">Quantitat</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor= "let prod of comanda.QuantitatProductes">
+              <td>{{ prod }}</td>
+            </tr>
+            </tbody>
+          </table>
+          <a> <strong> Estat: REALITZADA. </strong></a><br>
+          <button style="width: auto; margin: auto" (click)="norealitzaComanda(comanda._id)">Pas a NO realitzada</button>
+        </div>
+      </div>
+
+    </div><br>
   </div>
 </div>

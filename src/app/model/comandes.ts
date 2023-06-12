@@ -11,9 +11,10 @@ export class Comandes {
   LlistaProductes: string[];
   TallaProductes: string[];
   QuantitatProductes: string[];
+  realitzada: string;
 
 
-  constructor( UserName: string, UserMail: string, UserNameReal: string, Pais: string, Ciutat: string, CodiPostal: string, CarrerNum: string, NumeroTelf: string, LlistaProductes: string[], TallaProductes: string[], QuantitatProductes: string[],) {
+  constructor( UserName: string, UserMail: string, UserNameReal: string, Pais: string, Ciutat: string, CodiPostal: string, CarrerNum: string, NumeroTelf: string, LlistaProductes: string[], TallaProductes: string[], QuantitatProductes: string[], realitzada: string) {
     this.UserName = UserName;
     this.UserMail = UserMail;
     this.UserNameReal = UserNameReal;
@@ -25,6 +26,7 @@ export class Comandes {
     this.LlistaProductes = LlistaProductes;
     this.TallaProductes = TallaProductes;
     this.QuantitatProductes = QuantitatProductes;
+    this.realitzada = realitzada;
 
   }
 }

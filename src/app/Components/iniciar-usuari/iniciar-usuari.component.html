@@ -7,7 +7,7 @@
         <form class="mt-4" [formGroup]="InitSesionForm" (ngSubmit)="IniciaSessio()" >
           <div class="mb-3">
             <span *ngIf="InitSesionForm.get('IniciUsuari')?.value" class="float-start" style="font-size: 20px">Nom d'usuari:</span>
-            <input type="text" class="form-control form-control-lg" placeholder="Nom d'usuari" formControlName="IniciUsuari">
+            <input id="IniciUsuari" type="text" class="form-control form-control-lg" placeholder="Nom d'usuari" formControlName="IniciUsuari">
             <div class="text-danger" *ngIf="InitSesionForm.get('IniciUsuari')?.hasError('required') && InitSesionForm.get('IniciUsuari')?.touched">
               <span>Camp obligatori</span>
             </div>
@@ -15,7 +15,7 @@
 
           <div class="mb-3">
             <span *ngIf="InitSesionForm.get('IniciContrasenya')?.value" class="float-start" style="font-size: 20px">Contrasenya:</span>
-            <input type="password" class="form-control form-control-lg" placeholder="Contrasenya" formControlName="IniciContrasenya">
+            <input id="IniciContrasenya" type="password" class="form-control form-control-lg" placeholder="Contrasenya" formControlName="IniciContrasenya">
             <div class="text-danger" *ngIf="InitSesionForm.get('IniciContrasenya')?.hasError('required') && InitSesionForm.get('IniciContrasenya')?.touched">
               <span>Camp obligatori</span>
             </div>
@@ -24,7 +24,7 @@
 
           <div class="row mb-3">
             <div class="col">
-              <button type="submit" [disabled]="InitSesionForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
+              <button id="acceptarb" type="submit" [disabled]="InitSesionForm.invalid" class="btn btn-success btn-lg">ACCEPTAR</button>
             </div>
             <div class="col">
               <button type="reset" class="btn btn-warning btn-lg">ESBORRAR TOT</button>

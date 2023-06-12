@@ -94,13 +94,13 @@ export class LlistaProductesComponent implements OnInit{
   }
 
   eliminarProducte(id: any) {
-    //if(confirm('Estas segur que vols eliminar aquest producte?')){
-    this._producteService.eliminarProducte(id).subscribe(data => {
-      this.obtenirProductes(this.ordenar);
-    }, error => {
-      console.log(error);
-    })
-    //}
+    if(confirm('Estas segur que vols eliminar aquest producte?')){
+      this._producteService.eliminarProducte(id).subscribe(data => {
+        this.obtenirProductes(this.ordenar);
+      }, error => {
+        console.log(error);
+      })
+    }
   }
 
 }

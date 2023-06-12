@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AddProducte} from "../../model/AddProducte";
 import {ProducteService} from "../../servei/producte.service";
 import {Comandes} from "../../model/comandes";
@@ -8,7 +8,7 @@ import {Comandes} from "../../model/comandes";
   templateUrl: './comandes.component.html',
   styleUrls: ['./comandes.component.css']
 })
-export class ComandesComponent {
+export class ComandesComponent implements OnInit{
 
   listComandes: Comandes[] = [];
 
@@ -27,5 +27,27 @@ export class ComandesComponent {
     }, error => {
       console.log(error);
     })
+  }
+
+  realitzaComanda(id: any){
+    this._producteService.realitzaComanda(id).subscribe(data=>{
+      this.reload();
+      console.log(data);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  norealitzaComanda(id: any){
+    this._producteService.norealitzaComanda(id).subscribe(data=>{
+      this.reload();
+      console.log(data);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  reload(){
+    window.location.reload();
   }
 }

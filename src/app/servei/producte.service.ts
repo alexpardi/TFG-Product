@@ -18,6 +18,8 @@ export class ProducteService {
   urlMU = 'http://localhost:4000/api/user/modificaUsuari';
   urlEU = 'http://localhost:4000/api/user/getUsuari';
   urlGC = 'http://localhost:4000/api/user/getComanda';
+  urlRC = 'http://localhost:4000/api/user/realitzaComanda';
+  urlNRC = 'http://localhost:4000/api/user/norealitzaComanda';
 
   constructor(private http: HttpClient) { }
 
@@ -75,6 +77,12 @@ export class ProducteService {
   }
   getComanda(): Observable<any>{
     return this.http.get(this.urlGC);
+  }
+  realitzaComanda(id: string): Observable<any>{
+    return this.http.get(this.urlRC + id);
+  }
+  norealitzaComanda(id: string): Observable<any>{
+    return this.http.get(this.urlNRC + id);
   }
 
 }
